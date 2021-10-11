@@ -35,7 +35,7 @@ public class UserInfoIntegrationTest {
     @Test
     public void 중복_회원_예외(){
         // given
-        UserInfo userInfo = new UserInfo("name", "email");
+        UserInfo userInfo = new UserInfo("rys", "rys@gmail.com");
 
         // when
         userInfoService.join(userInfo);
@@ -63,7 +63,7 @@ public class UserInfoIntegrationTest {
     @Test
     public void findOne(){
         // given
-        UserInfo userInfo = new UserInfo("name", "email");
+        UserInfo userInfo = new UserInfo("lkh", "lkh@gmail!.com");
         userInfoService.join(userInfo);
 
         // when

@@ -10,23 +10,58 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig {
-
-    private final UserInfoRepository userInfoRepository;
-
-    public SpringConfig(UserInfoRepository userInfoRepository) {
-        this.userInfoRepository = userInfoRepository;
+    // Memory
+    @Bean
+    public UserInfoService userInfoService(){
+        return new UserInfoService(userInfoRepository());
     }
 
     @Bean
-    public UserInfoService userInfoService(){
-        return new UserInfoService(userInfoRepository);
+    public UserInfoRepository userInfoRepository(){
+        return new MemoryUserInfoRepository();
     }
 
-    //    private final DataSource dataSource;
+
+    // jdbc
+//    private final DataSource dataSource;
+//
+//    public SpringConfig(DataSource dataSource) {
+//        this.dataSource = dataSource;
+//    }
+//
+//    @Bean
+//    public UserInfoService userInfoService(DataSource dataSource){
+//        return new UserInfoService(userInfoRepository());
+//    }
+//
+//    @Bean
+//    public UserInfoRepository userInfoRepository(){
+//        return new JdbcUserInfoRepository(dataSource);
+//    }
+
+
+    // jdbc templete
+//    private final DataSource dataSource;
+//
+//    public SpringConfig(DataSource dataSource) {
+//        this.dataSource = dataSource;
+//    }
+//
+//    @Bean
+//    public UserInfoService userInfoService(DataSource dataSource){
+//        return new UserInfoService(userInfoRepository());
+//    }
+//
+//    @Bean
+//    public UserInfoRepository userInfoRepository(){
+//        return new JdbcTemplateUserInfoRepository(dataSource);
+//    }
+
+
+    // jpa
 //    private final EntityManager em;
 //
-//    public SpringConfig(DataSource dataSource, EntityManager em) {
-//        this.dataSource = dataSource;
+//    public SpringConfig(EntityManager em) {
 //        this.em = em;
 //    }
 //
@@ -37,9 +72,19 @@ public class SpringConfig {
 //
 //    @Bean
 //    public UserInfoRepository userInfoRepository(){
-////        return new MemoryUserInfoRepository();
-////        return new JdbcUserInfoRepository(dataSource);
-////        return new JdbcTemplateUserInfoRepository(dataSource);
 //        return new JpaUserInfoRepository(em);
+//    }
+
+
+    // spring data jpa
+//    private final UserInfoRepository userInfoRepository;
+//
+//    public SpringConfig(UserInfoRepository userInfoRepository) {
+//        this.userInfoRepository = userInfoRepository;
+//    }
+//
+//    @Bean
+//    public UserInfoService userInfoService(){
+//        return new UserInfoService(userInfoRepository);
 //    }
 }
