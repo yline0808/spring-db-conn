@@ -11,15 +11,15 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConfig {
     // Memory
-    @Bean
-    public UserInfoService userInfoService(){
-        return new UserInfoService(userInfoRepository());
-    }
-
-    @Bean
-    public UserInfoRepository userInfoRepository(){
-        return new MemoryUserInfoRepository();
-    }
+//    @Bean
+//    public UserInfoService userInfoService(){
+//        return new UserInfoService(userInfoRepository());
+//    }
+//
+//    @Bean
+//    public UserInfoRepository userInfoRepository(){
+//        return new MemoryUserInfoRepository();
+//    }
 
 
     // jdbc
@@ -77,14 +77,14 @@ public class SpringConfig {
 
 
     // spring data jpa
-//    private final UserInfoRepository userInfoRepository;
-//
-//    public SpringConfig(UserInfoRepository userInfoRepository) {
-//        this.userInfoRepository = userInfoRepository;
-//    }
-//
-//    @Bean
-//    public UserInfoService userInfoService(){
-//        return new UserInfoService(userInfoRepository);
-//    }
+    private final UserInfoRepository userInfoRepository;
+
+    public SpringConfig(UserInfoRepository userInfoRepository) {
+        this.userInfoRepository = userInfoRepository;
+    }
+
+    @Bean
+    public UserInfoService userInfoService(){
+        return new UserInfoService(userInfoRepository);
+    }
 }

@@ -153,8 +153,7 @@ public class JdbcUserInfoRepository implements UserInfoRepository{
         return DataSourceUtils.getConnection(dataSource);
     }
 
-    private void close(Connection conn, PreparedStatement pstmt, ResultSet rs)
-    {
+    private void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
         try {
             if (rs != null) {
                 rs.close();
@@ -174,7 +173,9 @@ public class JdbcUserInfoRepository implements UserInfoRepository{
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } }
+        }
+    }
+
     private void close(Connection conn) throws SQLException {
         DataSourceUtils.releaseConnection(conn, dataSource);
     }
